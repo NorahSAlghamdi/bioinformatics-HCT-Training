@@ -293,13 +293,13 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <div class="eyebrow">KAUST Academy · HCT Cohort</div>
+    <div class="eyebrow">KASP Academy · HCT Cohort</div>
     <h1>Introduction to Bioinformatics</h1>
     <p class="hero-sub">A hands-on, two-weekend introduction to the field where biology meets data. Built for students from every background — medicine, engineering, and beyond.</p>
     <div class="hero-meta">
       <div class="meta-item">
         <span class="label">Instructor</span>
-        <span class="value">Norah AlGhamdi</span>
+        <span class="value">Dr. Norah</span>
       </div>
       <div class="meta-item">
         <span class="label">Dates</span>
@@ -321,6 +321,7 @@
   <div class="nav-inner">
     <a href="#about">About</a>
     <a href="#schedule">Schedule</a>
+    <a href="#outline">Outline</a>
     <a href="#day1">Day 1</a>
     <a href="#day2">Day 2</a>
     <a href="#weekend2">Weekend 2</a>
@@ -382,30 +383,53 @@
     </table>
   </section>
 
+  <!-- Course outline -->
+  <section id="outline">
+    <h2>Course Outline</h2>
+    <p class="section-sub">Full overview of what we'll cover over the two weekends.</p>
+    <div class="materials">
+      <div class="material-card">
+        <h3>Course Outline (Word)</h3>
+        <p>The full syllabus and schedule, ready to download or share.</p>
+        <a href="Outline.docx">Download outline →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Day 1 materials -->
   <section id="day1">
     <h2>Day 1 — Friday, April 24</h2>
-    <p class="section-sub">Foundations of bioinformatics and your first hands-on session.</p>
+    <p class="section-sub">Foundations of bioinformatics, the central dogma, and your first hands-on sessions.</p>
 
     <div class="materials">
       <div class="material-card">
         <h3>Slides</h3>
-        <p>Theoretical lecture slides covering what bioinformatics is, the central dogma, and the key biological databases.</p>
-        <a href="Day1_Bioinformatics_Slides.pptx">Open slides →</a>
+        <p>Theoretical lecture slides covering foundations, programming toolkits, and the central dogma.</p>
+        <a href="Day1_Bioinformatics_Slides_FORMATTED.pptx">Open slides →</a>
       </div>
 
       <div class="material-card">
-        <h3>Colab Notebook</h3>
-        <p>Hands-on practical: working with DNA sequences in Python, calculating GC content, and reading FASTA files.</p>
+        <h3>Notebook 1 — Foundation</h3>
+        <p>First hands-on: Python basics, DNA as strings, counting bases, GC content, finding motifs. 17 exercises.</p>
+        <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day1_Foundation.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
+        <span style="margin: 0 0.6rem; color: var(--border);">|</span>
+        <a href="Day1_Foundation.ipynb">Download .ipynb →</a>
+      </div>
+
+      <div class="material-card">
+        <h3>Notebook 2 — Central Dogma</h3>
+        <p>Second hands-on: transcribe DNA to RNA, translate to protein, find ORFs, detect mutations. 17 exercises.</p>
+        <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day1_CentralDogma.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
+        <span style="margin: 0 0.6rem; color: var(--border);">|</span>
+        <a href="Day1_CentralDogma.ipynb">Download .ipynb →</a>
+      </div>
+
+      <div class="material-card">
+        <h3>Practical Reference</h3>
+        <p>Additional hands-on material covering DNA sequences, GC content, and FASTA files.</p>
         <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day1_Bioinformatics_Practical.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
         <span style="margin: 0 0.6rem; color: var(--border);">|</span>
         <a href="Day1_Bioinformatics_Practical.ipynb">Download .ipynb →</a>
-      </div>
-
-      <div class="material-card">
-        <h3>Diagnostic Form</h3>
-        <p>A short, ungraded Google Form to help calibrate the course to the group's starting point.</p>
-        <a href="#">Link to be shared in session →</a>
       </div>
 
       <div class="material-card">
@@ -426,20 +450,23 @@
     </div>
   </section>
 
-  <!-- Day 2 placeholder -->
+  <!-- Day 2 materials -->
   <section id="day2">
     <h2>Day 2 — Saturday, April 25</h2>
-    <p class="section-sub">File formats, databases in depth, and real sequence data.</p>
+    <p class="section-sub">File formats, working with real sequence data, and the bioinformatics toolkit in practice.</p>
     <div class="materials">
-      <div class="material-card placeholder">
-        <h3>Slides — coming soon</h3>
-        <p>Will be posted before the session.</p>
-        <a href="#">Available Fri, Apr 24 →</a>
+      <div class="material-card">
+        <h3>Slides</h3>
+        <p>Lecture slides covering file formats (FASTA, FASTQ, GenBank), database deep-dive, and sequence data workflows.</p>
+        <a href="Day2_Bioinformatics_Slides.pptx">Open slides →</a>
       </div>
-      <div class="material-card placeholder">
-        <h3>Colab Notebook — coming soon</h3>
-        <p>Will be posted before the session.</p>
-        <a href="#">Available Fri, Apr 24 →</a>
+
+      <div class="material-card">
+        <h3>Notebook — FASTA &amp; Real Data</h3>
+        <p>Hands-on: working with FASTA files, parsing real sequence data, and using Biopython on real genes.</p>
+        <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day2_FASTA.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
+        <span style="margin: 0 0.6rem; color: var(--border);">|</span>
+        <a href="Day2_FASTA.ipynb">Download .ipynb →</a>
       </div>
     </div>
   </section>
@@ -462,11 +489,11 @@
       <div class="contact-grid">
         <div class="contact-item">
           <div class="contact-label">Instructor</div>
-          <div class="contact-value">Norah AlGhamdi</div>
+          <div class="contact-value">Dr. Norah</div>
         </div>
         <div class="contact-item">
           <div class="contact-label">Email</div>
-          <div class="contact-value">[nalghamd88@gmail.com]</div>
+          <div class="contact-value">[your email here]</div>
         </div>
         <div class="contact-item">
           <div class="contact-label">Office hours</div>
@@ -483,7 +510,7 @@
 </main>
 
 <footer>
-  © 2026 · Introduction to Bioinformatics · HCT Cohort · KAUST Academy
+  © 2026 · Introduction to Bioinformatics · HCT Cohort · KASP Academy
 </footer>
 
 </body>
