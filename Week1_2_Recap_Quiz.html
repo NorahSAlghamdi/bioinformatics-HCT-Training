@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 & 2 Recap Quiz · Bioinformatics Foundations</title>
+<style>
+  :root {
+    --primary: #028090;
+    --secondary: #00A896;
+    --accent: #02C39A;
+    --dark: #05445E;
+    --light: #f6f9fa;
+    --correct: #2ecc71;
+    --wrong: #e74c3c;
+    --soft: #e8f3f4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, var(--light) 0%, #ffffff 100%);
+    color: #1a2a32;
+    padding: 24px 16px;
+    min-height: 100vh;
+    line-height: 1.55;
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  header {
+    background: var(--dark);
+    color: white;
+    padding: 24px 28px;
+    border-radius: 14px 14px 0 0;
+    border-left: 6px solid var(--accent);
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 6px; }
+  header p { opacity: 0.85; font-size: 0.95em; }
+  .quiz {
+    background: white;
+    padding: 28px;
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 8px 30px rgba(2, 128, 144, 0.08);
+  }
+  .progress {
+    background: var(--soft);
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .progress-fill {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+  }
+  .question { margin-bottom: 14px; padding-bottom: 18px; border-bottom: 1px solid var(--soft); }
+  .question:last-of-type { border-bottom: none; }
+  .q-number {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.85em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .q-text {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 14px;
+  }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option {
+    background: var(--soft);
+    border: 2px solid transparent;
+    padding: 11px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-size: 0.96em;
+    text-align: left;
+    width: 100%;
+  }
+  .option:hover:not(:disabled) {
+    background: #d5eef0;
+    transform: translateX(2px);
+  }
+  .option.correct { background: #e8f7ee; border-color: var(--correct); color: #1d6e3a; }
+  .option.wrong { background: #fce8e6; border-color: var(--wrong); color: #9c2a1f; }
+  .option:disabled { cursor: default; opacity: 0.95; }
+  .feedback {
+    display: none;
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.92em;
+    background: var(--soft);
+    border-left: 4px solid var(--primary);
+  }
+  .feedback.show { display: block; }
+  .feedback strong { color: var(--primary); }
+  .results {
+    display: none;
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, var(--primary), var(--dark));
+    color: white;
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+  .results.show { display: block; }
+  .results h2 { font-size: 2.4em; margin-bottom: 6px; }
+  .results .score { font-size: 4em; font-weight: 800; color: var(--accent); margin: 14px 0; }
+  .results p { opacity: 0.9; margin-bottom: 16px; }
+  .restart {
+    background: var(--accent);
+    color: var(--dark);
+    border: none;
+    padding: 11px 26px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .restart:hover { background: white; }
+  .topic-tag {
+    display: inline-block;
+    background: var(--soft);
+    color: var(--primary);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Week 1 & 2 Recap Quiz</h1>
+    <p>Foundations, databases, FASTQ, BLAST, alignment, variants · 10 questions</p>
+  </header>
+  <div class="quiz">
+    <div class="progress"><div class="progress-fill" id="progress"></div></div>
+    <div id="quiz-content"></div>
+    <div class="results" id="results">
+      <h2>Quiz Complete!</h2>
+      <div class="score" id="finalScore">0 / 10</div>
+      <p id="resultMessage"></p>
+      <button class="restart" onclick="restart()">Try Again</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    topic: "Week 1 — Central Dogma",
+    q: "What is the correct order of the central dogma of molecular biology?",
+    opts: [
+      "Protein → RNA → DNA",
+      "DNA → RNA → Protein",
+      "RNA → DNA → Protein",
+      "DNA → Protein → RNA"
+    ],
+    correct: 1,
+    explain: "DNA is transcribed into RNA, then RNA is translated into Protein. This direction of information flow is the core of molecular biology."
+  },
+  {
+    topic: "Week 1 — Genetic Code",
+    q: "How many DNA bases code for a single amino acid?",
+    opts: [
+      "1 base = 1 amino acid",
+      "2 bases = 1 amino acid",
+      "3 bases (a codon) = 1 amino acid",
+      "4 bases = 1 amino acid"
+    ],
+    correct: 2,
+    explain: "Three bases form a codon, which codes for one amino acid. There are 4³ = 64 possible codons coding for 20 amino acids (plus stop signals)."
+  },
+  {
+    topic: "Week 1 — File Formats",
+    q: "What does a FASTA file contain?",
+    opts: [
+      "Sequence reads with quality scores",
+      "Variant calls with positions",
+      "A header line (>) followed by raw sequence (DNA, RNA, or protein)",
+      "Aligned reads with mapping coordinates"
+    ],
+    correct: 2,
+    explain: "FASTA is the simplest sequence format: a `>` header line with an identifier, then one or more lines of sequence. No quality info."
+  },
+  {
+    topic: "Week 1 — Databases",
+    q: "Which database would you use to look up the function and 3D structure of a PROTEIN?",
+    opts: [
+      "GenBank",
+      "UniProt",
+      "dbSNP",
+      "GEO"
+    ],
+    correct: 1,
+    explain: "UniProt is the gold standard for protein sequence and functional information. GenBank is for nucleotide sequences; dbSNP for variants; GEO for expression studies."
+  },
+  {
+    topic: "Week 2 — FASTQ",
+    q: "What does a FASTQ file contain that a FASTA file does NOT?",
+    opts: [
+      "Gene names",
+      "Quality scores for each base",
+      "Protein sequences",
+      "Variant positions"
+    ],
+    correct: 1,
+    explain: "FASTQ has four lines per read: header, sequence, '+', and a quality string (Phred-encoded confidence per base). FASTA has only header + sequence."
+  },
+  {
+    topic: "Week 2 — Quality Scores",
+    q: "What does a Phred quality score of Q30 mean?",
+    opts: [
+      "30% chance the base is correct",
+      "30 reads support this base",
+      "1 in 1,000 chance the base call is wrong (99.9% accurate)",
+      "The base was sequenced 30 times"
+    ],
+    correct: 2,
+    explain: "Q30 means the error probability is 10^(-30/10) = 10^-3 = 0.1%. Q20 = 1% error, Q30 = 0.1% error, Q40 = 0.01% error."
+  },
+  {
+    topic: "Week 2 — BLAST",
+    q: "What is BLAST primarily used for?",
+    opts: [
+      "Calling variants from BAM files",
+      "Finding sequences in databases that are similar to a query sequence",
+      "Calculating gene expression levels",
+      "Designing PCR primers"
+    ],
+    correct: 1,
+    explain: "BLAST (Basic Local Alignment Search Tool) finds local matches between your query and millions of reference sequences. Use blastn for DNA, blastp for protein, blastx to translate DNA → protein."
+  },
+  {
+    topic: "Week 2 — BLAST Variants",
+    q: "Your query is a DNA sequence and you want to search a PROTEIN database. Which BLAST program do you use?",
+    opts: [
+      "blastn (DNA query, DNA database)",
+      "blastp (protein query, protein database)",
+      "blastx (DNA query translated to protein, protein database)",
+      "tblastn (protein query, translated DNA database)"
+    ],
+    correct: 2,
+    explain: "blastx translates your DNA query in all 6 reading frames and searches a protein database. tblastn does the reverse: protein query against translated DNA."
+  },
+  {
+    topic: "Week 2 — Alignment",
+    q: "What's the relationship between SAM and BAM files?",
+    opts: [
+      "They contain different data",
+      "BAM is the binary, compressed version of SAM (same content)",
+      "SAM is for DNA, BAM is for RNA",
+      "BAM is for variants, SAM is for reads"
+    ],
+    correct: 1,
+    explain: "Same data, different encoding. SAM is human-readable text; BAM is binary-compressed (smaller, faster to process). Tools like samtools convert between them."
+  },
+  {
+    topic: "Week 2 — Variants",
+    q: "What does a VCF file store?",
+    opts: [
+      "Aligned sequencing reads",
+      "Reference genome sequence",
+      "Variant calls — positions where the sample differs from the reference",
+      "Gene expression counts"
+    ],
+    correct: 2,
+    explain: "VCF (Variant Call Format) stores SNPs, indels, and structural variants — each row is a position where the sample's genome differs from the reference. Includes filters, quality scores, and annotations."
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = new Array(questions.length).fill(false);
+
+function render() {
+  const container = document.getElementById('quiz-content');
+  const results = document.getElementById('results');
+  if (currentQ >= questions.length) {
+    container.style.display = 'none';
+    results.classList.add('show');
+    document.getElementById('finalScore').textContent = score + ' / ' + questions.length;
+    let msg;
+    if (score === questions.length) msg = "Perfect score! You have a solid foundation for the advanced weeks.";
+    else if (score >= 8) msg = "Excellent! You really got the foundations.";
+    else if (score >= 6) msg = "Good work. Review the questions you missed before next class.";
+    else msg = "Take another pass through Week 1 + 2 notebooks before continuing.";
+    document.getElementById('resultMessage').textContent = msg;
+    return;
+  }
+  results.classList.remove('show');
+  container.style.display = 'block';
+  const q = questions[currentQ];
+  document.getElementById('progress').style.width = ((currentQ / questions.length) * 100) + '%';
+  let html = '<div class="question">';
+  html += '<div class="q-number">Question ' + (currentQ + 1) + ' / ' + questions.length;
+  html += '<span class="topic-tag">' + q.topic + '</span></div>';
+  html += '<div class="q-text">' + q.q + '</div>';
+  html += '<div class="options">';
+  q.opts.forEach((opt, i) => {
+    html += '<button class="option" onclick="answer(' + i + ')">' + opt + '</button>';
+  });
+  html += '</div>';
+  html += '<div class="feedback" id="feedback"><strong>Why:</strong> ' + q.explain + '</div>';
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function answer(idx) {
+  if (answered[currentQ]) return;
+  answered[currentQ] = true;
+  const q = questions[currentQ];
+  const buttons = document.querySelectorAll('.option');
+  buttons.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add('correct');
+    else if (i === idx) b.classList.add('wrong');
+  });
+  if (idx === q.correct) score++;
+  document.getElementById('feedback').classList.add('show');
+  setTimeout(() => {
+    currentQ++;
+    render();
+  }, 2400);
+}
+
+function restart() {
+  currentQ = 0;
+  score = 0;
+  answered = new Array(questions.length).fill(false);
+  document.getElementById('progress').style.width = '0%';
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
