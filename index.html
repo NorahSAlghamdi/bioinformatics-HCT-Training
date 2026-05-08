@@ -368,6 +368,9 @@
     <a href="#weekend2">Weekend 2</a>
     <a href="#day3">Day 3</a>
     <a href="#day4">Day 4</a>
+    <a href="#weekend3">Weekend 3</a>
+    <a href="#day5">Day 5</a>
+    <a href="#day6">Day 6</a>
     <a href="#quiz">Recap Quiz</a>
     <a href="#contact">Contact</a>
   </div>
@@ -645,6 +648,70 @@
         <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day4_Part2_Alignment_Variants_Python.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
         <span style="margin: 0 0.6rem; color: var(--border);">|</span>
         <a href="Day4_Part2_Alignment_Variants_Python.ipynb">Download .ipynb →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weekend 3 -->
+  <section id="weekend3">
+    <h2>Weekend 3 — May 8 &amp; 9</h2>
+    <p class="section-sub">Bulk RNA-seq pipeline — from real airway count matrices to differential expression with PyDESeq2. Real data: GSE52778 (Himes 2014, asthma + dexamethasone).</p>
+  </section>
+
+  <!-- Day 5 — Friday May 8 -->
+  <section id="day5">
+    <h2>Day 5 — Friday, May 8</h2>
+    <p class="section-sub">Bulk RNA-seq counts: from Recount3 download to QC, normalization, and PCA on a real airway dataset.</p>
+    <div class="materials">
+      <div class="material-card">
+        <h3>Slides</h3>
+        <p>Lecture slides covering DNA-seq vs RNA-seq, the bulk RNA-seq pipeline, count matrices, and normalization (CPM / TPM / DESeq2 median-of-ratios).</p>
+        <a href="Day5_Slides_Bulk_RNAseq_Counts_v2.pptx">Open slides →</a>
+      </div>
+
+      <div class="material-card">
+        <h3>Part 1 — Browse the airway study</h3>
+        <p>No-code walkthrough: explore GSE52778 on GEO, look at the SRA Run Selector, find the same data on Recount2/Recount3, and learn why we subset to 6 untreated-vs-dex samples.</p>
+        <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day5_Part1_Browse_Airway.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
+        <span style="margin: 0 0.6rem; color: var(--border);">|</span>
+        <a href="Day5_Part1_Browse_Airway.ipynb">Download .ipynb →</a>
+      </div>
+
+      <div class="material-card">
+        <h3>Part 2 — Real airway counts in Python</h3>
+        <p>Full pipeline on real RNA-seq data: download from Recount3, build metadata, library-size QC, gene filtering, CPM normalization, sample-sample correlation, and PCA. With in-line "Try it yourself" exercises.</p>
+        <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day5_Part2_Airway_Counts_Python.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
+        <span style="margin: 0 0.6rem; color: var(--border);">|</span>
+        <a href="Day5_Part2_Airway_Counts_Python.ipynb">Download .ipynb →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day 6 — Saturday May 9 -->
+  <section id="day6">
+    <h2>Day 6 — Saturday, May 9</h2>
+    <p class="section-sub">Differential expression with PyDESeq2 on the real airway dataset — find which genes change between control and dex-treated cells.</p>
+    <div class="materials">
+      <div class="material-card">
+        <h3>Slides</h3>
+        <p>Lecture slides covering log2 fold change, FDR, PyDESeq2, MA plots, volcano plots, heatmaps, GO / KEGG / Reactome enrichment, and ORA vs GSEA.</p>
+        <a href="Day6_Slides_Differential_Expression_v2.pptx">Open slides →</a>
+      </div>
+
+      <div class="material-card">
+        <h3>Part 1 — Browse glucocorticoid biology</h3>
+        <p>No-code walkthrough: read the Himes 2014 paper, look up NR3C1 (glucocorticoid receptor) on UniProt, find known dex-response gene sets on Harmonizome / Enrichr, and explore CRISPLD2 on GTEx.</p>
+        <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day6_Part1_Browse_Dex_Genes.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
+        <span style="margin: 0 0.6rem; color: var(--border);">|</span>
+        <a href="Day6_Part1_Browse_Dex_Genes.ipynb">Download .ipynb →</a>
+      </div>
+
+      <div class="material-card">
+        <h3>Part 2 — Real PyDESeq2 on airway</h3>
+        <p>Full DE pipeline: PyDESeq2 on 3 vs 3 samples, gene symbol mapping with mygene, MA plot, annotated volcano plot, Z-score heatmap, and pathway enrichment with gseapy. With in-line "Try it yourself" exercises.</p>
+        <a href="https://colab.research.google.com/github/NorahSAlghamdi/bioinformatics-HCT-Training/blob/main/Day6_Part2_PyDESeq2_Airway.ipynb" target="_blank" rel="noopener">Open in Colab →</a>
+        <span style="margin: 0 0.6rem; color: var(--border);">|</span>
+        <a href="Day6_Part2_PyDESeq2_Airway.ipynb">Download .ipynb →</a>
       </div>
     </div>
   </section>
